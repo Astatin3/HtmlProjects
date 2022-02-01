@@ -1,0 +1,106 @@
+<head>
+    <style>
+
+.S {
+    margin-left: 42.5%;
+}
+
+.L {
+    margin-left: 41%;
+}
+
+.R {
+    margin-left: 20px;
+}
+
+.B {
+    margin-left: 43%;
+}
+
+.Maze {
+    margin-left: 33%;
+}
+
+    </style>
+</head>
+<body>
+    <a href="#F" onclick="add('^ ')" id="S" class="S">Straight</a><br>
+    <a href="#L" onclick="add('< ')" id="L" class="L">Left</a>
+    <a href="#R" onclick="add('> ')" id="R" class="R">Right</a><br>
+    <a href="#B" onclick="back()" class="B">Back</a>
+    <br>
+    <p id="p" class="Maze"></p>
+
+
+    <script>
+
+        var clicks = 0
+
+
+        function add(x) {
+            document.getElementById('p').innerHTML = document.getElementById('p').innerHTML + x
+            clicks++
+            finish()
+            random()
+        }
+        function back() {
+            document.getElementById('p').innerHTML = document.getElementById('p').innerHTML.split("&gt;").join(">").split("&lt;").join("<").slice(0, -2);
+            clicks++
+            finish()
+            random()
+        }
+
+        function finish() {
+            if(clicks >= 30 && document.getElementById('p').innerHTML.split("&gt;").join(">").split("&lt;").join("<").length >= 30 && code()){
+                alert("You Win!")
+                input = document.getElementById('p').innerHTML
+            }
+        }
+
+        function number() {
+                var seed = toNumber()
+                var x = Math.sin(seed++) * 10000;
+                return x - Math.floor(x);
+            }
+
+        function random(){
+
+            if(number() <= (0.333333)){
+                document.getElementById("R").style.color = "gray";
+                document.getElementById("R").style.pointerEvents = "none";
+                    }else{
+                document.getElementById("R").style.color = "blue";
+                document.getElementById("R").style.pointerEvents = "";
+            }   
+
+            if(number() >= (0.333333) && number() <= (0.666666)){
+                document.getElementById("S").style.color = "gray";
+                document.getElementById("S").style.pointerEvents = "none";
+                    }else{
+                document.getElementById("S").style.color = "blue";
+                document.getElementById("S").style.pointerEvents = "";
+            }
+
+            if(number() >= (0.666666)){
+                document.getElementById("L").style.color = "gray";
+                document.getElementById("L").style.pointerEvents = "none";
+                    }else{
+                document.getElementById("L").style.color = "blue";
+                document.getElementById("L").style.pointerEvents = "";
+            }
+        }
+
+        function toNumber() {
+            return document.getElementById('p').innerHTML.split("&lt;").join("1").split("^").join("2").split("&gt;").join("3").split(" ").join("")
+        }
+
+        var input = ""
+
+        function code() {
+            if(input === ""){return true}else
+            if(input === document.getElementById('p').innerHTML){return true}else
+            {return false}
+        }
+
+    </script>
+</body>

